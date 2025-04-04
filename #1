@@ -1,0 +1,38 @@
+using System;
+namespace InterfaceExample
+{
+    // Оголошення інтерфейсу з методом Login()
+    public interface ILoginable
+    {
+        void Login();
+    }
+    // Клас User, що реалізує інтерфейс ILoginable
+    public class User : ILoginable
+    {
+        public string Username { get; set; }
+
+        public User(string username)
+        {
+            Username = username;
+        }
+        // Реалізація методу Login()
+        public void Login()
+        {
+            Console.WriteLine($"{Username} has successfully logged in.");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Створення об’єкта класу User
+            User user = new User("Andrew");
+            // Виклик методу Login через інтерфейс
+            ILoginable loginableUser = user; // Приведення об’єкта User до типу ILoginable
+            loginableUser.Login();
+
+            // Або можна викликати метод безпосередньо
+            user.Login();
+        }
+    }
+}
