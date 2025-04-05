@@ -1,0 +1,30 @@
+using System;
+namespace GenericInterfaceExample
+{
+    // Узагальнений клас Box<T>, який реалізує ICloneable
+    public class Box<T> : ICloneable
+    {
+        public T Item { get; set; }
+        public Box(T item)
+        {
+            Item = item;
+        }
+        // Реалізація методу Clone()
+        public object Clone()
+        {
+            return new Box<T>(this.Item);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Створення об’єкта Box
+            Box<string> originalBox = new Box<string>("Book");
+            // Клонування через метод Clone()
+            Box<string> clonedBox = (Box<string>)originalBox.Clone();
+            Console.WriteLine($"Original: {originalBox.Item}");
+            Console.WriteLine($"Clone: {clonedBox.Item}");
+        }
+    }
+}
