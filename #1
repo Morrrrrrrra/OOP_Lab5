@@ -1,13 +1,11 @@
 using System;
 namespace InterfaceExample
 {
-    // Оголошення інтерфейсу з методом Login()
-    public interface ILoginable
+    public interface ILoginable    // Оголошення інтерфейсу з методом Login()
     {
         void Login();
     }
-    // Клас User, що реалізує інтерфейс ILoginable
-    public class User : ILoginable
+    public class User : ILoginable    // Клас User, що реалізує інтерфейс ILoginable
     {
         public string Username { get; set; }
 
@@ -15,8 +13,7 @@ namespace InterfaceExample
         {
             Username = username;
         }
-        // Реалізація методу Login()
-        public void Login()
+        public void Login()   // Реалізація методу Login()
         {
             Console.WriteLine($"{Username} has successfully logged in.");
         }
@@ -25,14 +22,10 @@ namespace InterfaceExample
     {
         static void Main(string[] args)
         {
-            // Створення об’єкта класу User
-            User user = new User("Andrew");
-            // Виклик методу Login через інтерфейс
-            ILoginable loginableUser = user; // Приведення об’єкта User до типу ILoginable
-            loginableUser.Login();
-
-            // Або можна викликати метод безпосередньо
-            user.Login();
+            User user = new User("Andrew");       // Створення об’єкта класу User
+            ILoginable loginableUser = user; // Виклик методу Login за допомогою інтерфейсу           
+loginableUser.Login();
+            user.Login();         // Безпосередній виклик методу Login
         }
     }
 }
