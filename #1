@@ -1,6 +1,4 @@
 using System;
-namespace InterfaceExample
-{
     public interface ILoginable    // Оголошення інтерфейсу з методом Login()
     {
         void Login();
@@ -24,8 +22,7 @@ namespace InterfaceExample
         {
             User user = new User("Andrew");       // Створення об’єкта класу User
             ILoginable loginableUser = user; // Виклик методу Login за допомогою інтерфейсу           
-loginableUser.Login();
+            loginableUser.Login();
             user.Login();         // Безпосередній виклик методу Login
         }
     }
-}
