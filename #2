@@ -1,13 +1,9 @@
 using System;
-namespace InterfaceExample
-{
-    // Інтерфейс з методом Save()
-    public interface ISaveable
+    public interface ISaveable    // Інтерфейс з методом Save()
     {
         void Save();
     }
-    // Клас File, що явно реалізує інтерфейс ISaveable
-    public class File : ISaveable
+    public class File : ISaveable    // Клас File, що реалізує інтерфейс ISaveable
     {
         public string FileName { get; set; }
 
@@ -15,8 +11,7 @@ namespace InterfaceExample
         {
             FileName = fileName;
         }
-        // Явна реалізація методу Save()
-        void ISaveable.Save()
+        void ISaveable.Save()        // Реалізація методу Save()
         {
             Console.WriteLine($"File '{FileName}' has been successfully saved.");
         }
@@ -25,13 +20,8 @@ namespace InterfaceExample
     {
         static void Main(string[] args)
         {
-            // Створення об’єкта класу File
-            File myFile = new File("document.txt");
-            // Намагаємося викликати Save() напряму - ПОМИЛКА
-            // myFile.Save(); // Помилка компіляції
-            // Виклик методу Save() через інтерфейсне посилання
-            ISaveable saveableFile = myFile;
+            File myFile = new File("NewFile.txt");    // Створення об’єкта класу File
+            ISaveable saveableFile = myFile;          // Виклик методу Save() через інтерфейсне посилання
             saveableFile.Save();
         }
     }
-}
